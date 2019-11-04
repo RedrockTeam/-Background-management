@@ -19,21 +19,47 @@
 </template>
 <script>
 import  btn from '../views/wxmuen/meunBtn.vue'
+const baseUrl = "https://wx.redrock.team/magicloop/menu?token=magicloooooooooop"
 export default {
     data(){
         return{
-            meun:[{name : '重邮小帮手'  , son:['11' , '22' , '33']} ,  {name : '大学习'  , son:['11' , '22' , '33']}   , {name : '重邮小帮手'  , son:['11' , '22' , '33']} ]
+            meun:[],
+            data:{},
         }
     },
     components:{
         'meun'  : btn
     },
     created(){
-        this.meun  = this.test.button
+        this.$axios.get(baseUrl).then((res) =>{
+            this.data = res.data
+            try{
+               this.test.button = res.data.selfmenu_info.button
+            }
+            catch{
+                alert("请求错误")
+            }
+            this.meun  = this.test.button
+        })
     },
     methods:{
         send(){
-
+            if( this.data.selfmenu_info.button){
+                this.data.selfmenu_info.button =  this.test.button
+            }else{
+                return;
+            }
+            // this.$axios.patch(baseUrl , this.data, {
+            //     headers:{
+            //         "Content-Type" : "application/json"
+            //     }
+            // }).then((res) =>{
+            //     if(res.data.errcode === 0){
+            //         alert('修改成功')
+            //     }else{
+            //         alert('修改失败')
+            //     }
+            // })
         }
     }
 }

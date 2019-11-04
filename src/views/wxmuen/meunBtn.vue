@@ -51,7 +51,7 @@ li{
      position: relative;
      .btns{
          font-size: 20px;
-         width: 100px;
+         max-width: 150px;
          min-height:50px;
          background-color:  #c2c2c2;
          position: absolute;
@@ -67,7 +67,7 @@ li{
              bottom: -7px;
          }
          a{
-             font-size: 20px;
+             font-size: 18px;
              line-height:2em;
              margin: 0   .5em;
              display: block;

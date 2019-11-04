@@ -10,16 +10,16 @@
         <div v-if="type === 1">
             <div  v-for=" (item , name) in view"  v-show="!(name == 'type')">  
                 <label>
-                    <div class="name">{{name}} :</div>
-                    <input type="text" v-model="view[name]">
+                    <p class="name">{{name}} :</p>
+                    <input  class="addName" type="text" v-model="view[name]">
                 </label>
             </div>
         </div>
         <div v-if="type === 2">
             <div  v-for=" (item , name) in click"  v-show="!(name == 'type')">
                 <label>
-                    <div class="name">{{name}} :</div>
-                    <input type="text"  v-model="click[name]">
+                    <p class="name">{{name}} :</p>
+                    <input    class="addName"   type="text"  v-model="click[name]">
                 </label>
             </div>
         </div>
@@ -32,17 +32,17 @@
 export default {
     data(){
         return{
-            button:['view' , 'view_limited'],
+            button:['view' , 'click'],
             type:1,
             view:{
-                type:'view',
                 name : '',
-                url:''
+                type:'view',
+                url:'',
             },
             click:{
-                type:'view_limited',
+                key:'',
                 name:'',
-                media_id:''
+                type:'click',
             }
 
         }
@@ -54,14 +54,19 @@ export default {
             if(this.check(add)){
                 this.test.button[id]['sub_button'].list.push(add)
                 alert('添加成功')
+                this.$router.push({path:'/meun'})
             }else{
-                alert('请填入相关信息')
+                alert('请正确填入相关信息')
             }
         }
     }
 }
 </script>
 <style lang="scss" scoped>
+.addName{
+    width: 25em;
+     height: 2.4em;
+}
 .add{
     position: relative;
     margin-top: 50px;
@@ -69,6 +74,10 @@ export default {
     height: 100%;
     div{
         margin: 20px 0 ;
+    }
+    p{
+        margin: 0 0 ;
+        padding:0 0;
     }
     .addClick{
         position: absolute;

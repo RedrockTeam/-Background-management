@@ -12,7 +12,7 @@
         </div>
         <div v-for="(item , name) in detail">
             <label v-show="name != 'type'">
-                <div> {{name}}: </div>
+                <p> {{name}}: </p>
                 <input   type="text"    v-model="set[name]"> 
             </label>
         </div>
@@ -42,7 +42,9 @@ export default {
         del(){
              let id = this.$route.query.id
              let index = this.$route.query.index  
-             this.test.button[id]['sub_button'].list.splice(index , 1)        
+             this.test.button[id]['sub_button'].list.splice(index , 1)   
+             alert("删除成功")
+             this.$router.push({path:'/meun'})
         },
         done(){
             let id = this.$route.query.id
@@ -65,6 +67,14 @@ export default {
     position: relative;
     div{
         margin: 20px 0 ;
+        input{
+            height: 2.4em;
+            width: 25em;
+        }
+    }
+    p{
+        margin:  0 0;
+        padding:  0  0;
     }
     .delete {
         padding-right: 50px;

@@ -2,6 +2,11 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 
+//引入axios
+import axios from 'axios'
+//全局引用axios
+Vue.prototype.$axios = axios
+
 //引入通用样式
 import  "./assets/css/common.css"
 
